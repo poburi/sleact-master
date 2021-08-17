@@ -34,12 +34,12 @@ const config: webpack.Configuration = {
             [
               '@babel/preset-env',
               {
-                targets: { browsers: ['last 2 chrome versions', 'IE11'] }, // 지원 브라우저
+                targets: { browsers: ['last 2 chrome versions'] },
                 debug: isDevelopment,
               },
             ],
-            '@babel/preset-react', // react 코드 바꿔주는
-            '@babel/preset-typescript', // typescript 코드 바꿔주는
+            '@babel/preset-react',
+            '@babel/preset-typescript',
           ],
           env: {
             development: {
@@ -54,18 +54,18 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.css?$/,
-        use: ['style-loader', 'css-loader'], // css->javascript로 변환해주는
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({ // typescript를 위한
+    new ForkTsCheckerWebpackPlugin({
       async: false,
       // eslint: {
       //   files: "./src/**/*",
       // },
     }),
-    new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? 'development' : 'production' }), // proccess.env.NODE_ENV라는 노드런타임을 사용할 수 있게 해줌.
+    new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? 'development' : 'production' }),
   ],
   output: {
     path: path.join(__dirname, 'dist'),
